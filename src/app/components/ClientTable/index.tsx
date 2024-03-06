@@ -1,4 +1,4 @@
-export default function ClientTable() {
+export function ClientTable() {
   return (
     <table className="w-full overflow-auto text-sm">
       <thead>
