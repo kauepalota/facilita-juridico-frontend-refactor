@@ -40,8 +40,6 @@ export function ClientFilters() {
   })
 
   function onSubmit(data: FilterClientForm) {
-    console.log('submiting', data)
-
     router.push(pathname + '?' + createQueryString(data))
   }
 

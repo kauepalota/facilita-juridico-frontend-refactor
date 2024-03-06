@@ -27,8 +27,6 @@ export async function getClients({
     },
   )
 
-  console.log(response.status)
-
   if (response.status !== 200) {
     return []
   }
