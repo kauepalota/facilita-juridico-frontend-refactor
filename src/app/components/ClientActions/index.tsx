@@ -8,7 +8,7 @@ export function ClientActions() {
 
       <button
         className="flex h-9 items-center gap-2 whitespace-nowrap rounded-md bg-stone-950 px-2 py-2 text-sm 
-        font-medium text-white shadow hover:bg-stone-900"
+        font-medium text-white shadow-sm hover:bg-stone-900"
       >
         <Waypoints size={16} />
         <span className="max-md:hidden">Calcular rota</span>

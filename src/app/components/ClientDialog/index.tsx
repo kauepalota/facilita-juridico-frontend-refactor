@@ -3,6 +3,7 @@
 import * as Dialog from '@radix-ui/react-dialog'
 
 import { Plus, X } from 'lucide-react'
+import { ClientDialogForm } from '../ClientDialogForm'
 
 export function ClientDialog() {
   return (
@@ -10,7 +11,7 @@ export function ClientDialog() {
       <Dialog.Trigger asChild>
         <button
           className="flex h-9 items-center gap-2 whitespace-nowrap rounded-md bg-stone-950 px-2 py-2 text-sm 
-        font-medium text-white shadow hover:bg-stone-900"
+        font-medium text-white shadow-sm hover:bg-stone-900"
         >
           <Plus size={16} />
           <span className="max-md:hidden">Novo cliente</span>
@@ -39,42 +40,7 @@ export function ClientDialog() {
             </Dialog.Close>
           </div>
 
-          <form className="mt-8 grid items-start gap-4">
-            <div className="grid gap-2">
-              <label className="text-sm font-medium" htmlFor="name">
-                Nome
-              </label>
-              <input
-                id="name"
-                className="h-9 w-full rounded border border-stone-200 bg-transparent px-3 py-1 text-sm shadow-sm outline-none"
-                placeholder="Matheus Silva"
-              />
-            </div>
-            <div className="grid gap-2">
-              <label htmlFor="location-x">Localização X</label>
-              <input
-                id="location-x"
-                type="number"
-                className="h-9 w-full rounded border border-stone-200 bg-transparent px-3 py-1 text-sm shadow-sm outline-none"
-                placeholder="0"
-              />
-            </div>
-            <div className="grid gap-2">
-              <label htmlFor="location-y">Localização Y</label>
-              <input
-                id="location-y"
-                type="number"
-                className="h-9 w-full rounded border border-stone-200 bg-transparent px-3 py-1 text-sm shadow-sm outline-none"
-                placeholder="0"
-              />
-            </div>
-            <button
-              className="items-center gap-2 whitespace-nowrap rounded-md bg-stone-950 px-2 py-2 text-sm 
-        font-medium text-white shadow hover:bg-stone-900"
-            >
-              Criar
-            </button>
-          </form>
+          <ClientDialogForm />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
