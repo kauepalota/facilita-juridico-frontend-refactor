@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { ClientActions } from './components/ClientActions'
 import { ClientFilters } from './components/ClientFilters'
 import { ClientTable } from './components/ClientTable'
@@ -8,12 +9,16 @@ export default function Home() {
       <h1 className="font-semibold">Clientes</h1>
 
       <div className="flex items-center justify-between">
-        <ClientFilters />
-        <ClientActions />
+        <Suspense>
+          <ClientFilters />
+          <ClientActions />
+        </Suspense>
       </div>
 
       <div className="rounded-lg border">
-        <ClientTable />
+        <Suspense>
+          <ClientTable />
+        </Suspense>
       </div>
     </div>
   )
