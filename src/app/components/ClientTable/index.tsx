@@ -1,6 +1,7 @@
 'use client'
 
 import { getClients } from '@/app/data/clients/client-data'
+import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 
@@ -12,9 +13,8 @@ export function ClientTable() {
 
   const routing = params.has('routing')
 
-  const { data } = useQuery({
-    queryKey: ['clients', id, name, routing],
-
+  const { data, refetch } = useQuery({
+    queryKey: ['clients'],
     queryFn: async () =>
       getClients({
         filter: {
@@ -24,6 +24,10 @@ export function ClientTable() {
         routing,
       }),
   })
+
+  useEffect(() => {
+    refetch()
+  }, [id, name, routing, refetch])
 
   return (
     <table className="w-full overflow-auto text-sm">

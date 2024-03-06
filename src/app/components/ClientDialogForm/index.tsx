@@ -9,7 +9,6 @@ import {
   createClient,
 } from '@/app/data/clients/create-client-data'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Client } from '@/app/data/clients/client-data'
 
 type ClientDialogFormProps = {
   toggleOpen: () => void
@@ -24,10 +23,8 @@ export function ClientDialogForm({ toggleOpen }: ClientDialogFormProps) {
 
   const mutation = useMutation({
     mutationFn: handleCreate,
-    onSuccess: async (data) => {
-      queryClient.setQueryData(['clients'], (current: Client[]) => {
-        return [...current, data]
-      })
+    onSuccess: async () => {
+      queryClient.invalidateQueries({ queryKey: ['clients'] })
     },
   })
 
@@ -41,7 +38,7 @@ export function ClientDialogForm({ toggleOpen }: ClientDialogFormProps) {
       toggleOpen()
       reset()
     } catch (error) {
-      alert(error)
+      alert(`Failed to create client due to ${error}`)
     }
   }
 

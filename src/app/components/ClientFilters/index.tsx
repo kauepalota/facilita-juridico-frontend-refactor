@@ -5,7 +5,7 @@ import {
   FilterClientFormSchema,
 } from '@/app/data/clients/filter-client-data'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { SearchIcon } from 'lucide-react'
+import { SearchIcon, X } from 'lucide-react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
@@ -35,12 +35,18 @@ export function ClientFilters() {
     [searchParams],
   )
 
-  const { register, handleSubmit } = useForm<FilterClientForm>({
+  const { register, handleSubmit, reset } = useForm<FilterClientForm>({
     resolver: zodResolver(FilterClientFormSchema),
   })
 
   function onSubmit(data: FilterClientForm) {
+    console.log('submiting', data)
+
     router.push(pathname + '?' + createQueryString(data))
+  }
+
+  function onClearFilters() {
+    reset()
   }
 
   return (
@@ -65,6 +71,15 @@ export function ClientFilters() {
       >
         <SearchIcon size={16} />
         <span className="max-md:hidden">Filtrar resultados</span>
+      </button>
+
+      <button
+        onClick={onClearFilters}
+        className="border-sm flex h-9 items-center gap-2 whitespace-nowrap rounded-md border bg-white 
+          px-2 py-2 text-sm font-medium text-stone-950 shadow-sm hover:bg-stone-50"
+      >
+        <X size={16} />
+        <span className="max-md:hidden">Remover filtros</span>
       </button>
     </form>
   )

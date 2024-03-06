@@ -1,6 +1,6 @@
 'use client'
 
-import { Waypoints, X } from 'lucide-react'
+import { Waypoints } from 'lucide-react'
 import { ClientDialog } from '../ClientDialog'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { useCallback } from 'react'
@@ -36,18 +36,18 @@ export function ClientActions() {
         font-medium text-white shadow-sm hover:bg-stone-900"
         >
           <Waypoints size={16} />
-          <span className="max-md:hidden">Ordenar rota</span>
+          <span className="max-md:hidden">Rota</span>
         </button>
       )}
 
       {searchParams.has('routing') && (
         <button
           onClick={() => onRouteCalculate()}
-          className="flex h-9 items-center gap-2 whitespace-nowrap rounded-md bg-stone-950 px-2 py-2 text-sm 
-        font-medium text-white shadow-sm hover:bg-stone-900"
+          className="flex h-9 items-center gap-2 whitespace-nowrap rounded-md bg-stone-100 px-2 py-2 text-sm 
+      font-medium text-stone-950 shadow-sm hover:bg-stone-50"
         >
-          <X size={16} />
-          <span className="max-md:hidden">Reverter</span>
+          <Waypoints size={16} />
+          <span className="max-md:hidden">Desfazer</span>
         </button>
       )}
     </div>
