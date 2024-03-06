@@ -11,15 +11,19 @@ import {
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Client } from '@/app/data/clients/client-data'
 
-export function ClientDialogForm() {
-  const { register, handleSubmit } = useForm({
+type ClientDialogFormProps = {
+  toggleOpen: () => void
+}
+
+export function ClientDialogForm({ toggleOpen }: ClientDialogFormProps) {
+  const { register, handleSubmit, reset } = useForm({
     resolver: zodResolver(CreateClientFormSchema),
   })
 
   const queryClient = useQueryClient()
 
   const mutation = useMutation({
-    mutationFn: onSubmit,
+    mutationFn: handleCreate,
     onSuccess: async (data) => {
       queryClient.setQueryData(['clients'], (current: Client[]) => {
         return [...current, data]
@@ -29,15 +33,20 @@ export function ClientDialogForm() {
 
   async function onSubmit(form: CreateClientForm) {
     try {
-      const created = await createClient(form)
+      const created = await mutation.mutateAsync(form)
       if (!created) {
         alert('Failed to create client')
       }
 
-      await mutation.mutateAsync(created)
+      toggleOpen()
+      reset()
     } catch (error) {
       alert(error)
     }
+  }
+
+  async function handleCreate(form: CreateClientForm) {
+    return createClient(form)
   }
 
   return (
@@ -79,6 +88,7 @@ export function ClientDialogForm() {
           {...register('locationY', { valueAsNumber: true })}
         />
       </div>
+
       <button
         type="submit"
         className="items-center gap-2 whitespace-nowrap rounded-md bg-stone-950 px-2 py-2 text-sm 

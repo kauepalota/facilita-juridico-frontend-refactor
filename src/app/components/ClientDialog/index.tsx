@@ -4,10 +4,13 @@ import * as Dialog from '@radix-ui/react-dialog'
 
 import { Plus, X } from 'lucide-react'
 import { ClientDialogForm } from '../ClientDialogForm'
+import { useState } from 'react'
 
 export function ClientDialog() {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button
           className="flex h-9 items-center gap-2 whitespace-nowrap rounded-md bg-stone-950 px-2 py-2 text-sm 
@@ -40,7 +43,7 @@ export function ClientDialog() {
             </Dialog.Close>
           </div>
 
-          <ClientDialogForm />
+          <ClientDialogForm toggleOpen={() => setOpen(!open)} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

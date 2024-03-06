@@ -13,7 +13,7 @@ export type CreateClientForm = z.infer<typeof CreateClientFormSchema>
 
 export async function createClient(data: CreateClientForm): Promise<Client> {
   const response = await await fetch(
-    process.env.NEXT_PUBLIC_API_URL as string,
+    `${process.env.NEXT_PUBLIC_API_URL}/clients`,
     {
       method: 'POST',
       headers: {
