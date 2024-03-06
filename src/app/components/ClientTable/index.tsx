@@ -10,8 +10,10 @@ export function ClientTable() {
   const id = params.get('id')
   const name = params.get('name')
 
+  const routing = params.has('routing')
+
   const { data } = useQuery({
-    queryKey: ['clients', id, name],
+    queryKey: ['clients', id, name, routing],
 
     queryFn: async () =>
       getClients({
@@ -19,6 +21,7 @@ export function ClientTable() {
           id: id ? Number(id) : undefined,
           name: name || undefined,
         },
+        routing,
       }),
   })
 

@@ -9,12 +9,25 @@ export type Client = {
 
 export type ClientFetchProps = {
   filter: FilterClientForm
+  routing: boolean
 }
 
 export async function getClients({
   filter,
+  routing,
 }: ClientFetchProps): Promise<Client[]> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/clients`)
+  const params = new URLSearchParams({
+    routing: routing ? 'true' : 'false',
+  })
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/clients?${params}`,
+    {
+      method: 'GET',
+    },
+  )
+
+  console.log(response.status)
 
   if (response.status !== 200) {
     return []
