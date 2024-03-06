@@ -15,12 +15,32 @@ export default function ClientTable() {
 
       <tbody className="[&_tr:last-child]:border-0">
         <tr className="border-b">
-          <td className="p-2 align-middle">#1</td>
+          <td className="p-2 align-middle">a1fdfcc4</td>
           <td className="p-2 align-middle">João</td>
           <td className="p-2 align-middle">Rio de Janeiro</td>
         </tr>
         <tr className="border-b">
-          <td className="p-2 align-middle">#2</td>
+          <td className="p-2 align-middle">b3fkd7b4</td>
+          <td className="p-2 align-middle">Maria</td>
+          <td className="p-2 align-middle">São Paulo</td>
+        </tr>
+        <tr className="border-b">
+          <td className="p-2 align-middle">b3fkd7b4</td>
+          <td className="p-2 align-middle">Maria</td>
+          <td className="p-2 align-middle">São Paulo</td>
+        </tr>
+        <tr className="border-b">
+          <td className="p-2 align-middle">b3fkd7b4</td>
+          <td className="p-2 align-middle">Maria</td>
+          <td className="p-2 align-middle">São Paulo</td>
+        </tr>
+        <tr className="border-b">
+          <td className="p-2 align-middle">b3fkd7b4</td>
+          <td className="p-2 align-middle">Maria</td>
+          <td className="p-2 align-middle">São Paulo</td>
+        </tr>
+        <tr className="border-b">
+          <td className="p-2 align-middle">b3fkd7b4</td>
           <td className="p-2 align-middle">Maria</td>
           <td className="p-2 align-middle">São Paulo</td>
         </tr>
