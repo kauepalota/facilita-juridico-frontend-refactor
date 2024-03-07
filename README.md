@@ -5,7 +5,17 @@ This project was developed for a test, with the objective of displaying all clie
 
 [Click here to view the test document](https://docs.google.com/document/d/1D9UFnRlWfUUlizmGV-8EIKT8YXpjO2Fxzw7ch1muz9U/)
 
-## Getting Started
+## Installation
+
+```bash
+npm install
+# or
+yarn
+# or
+pnpm
+```
+
+## Running the app
 
 First, run the development server:
 
@@ -26,7 +36,6 @@ bun dev
 - Typescript
 - TailwindCSS
 - Tanstack/react-query
-- Prisma
 - Radix UI
 - Zod
 - Sonner
