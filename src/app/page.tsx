@@ -2,24 +2,25 @@ import { Suspense } from 'react'
 import { ClientActions } from './components/ClientActions'
 import { ClientFilters } from './components/ClientFilters'
 import { ClientTable } from './components/ClientTable'
+import { Toaster } from 'sonner'
 
 export default function Home() {
   return (
     <div className="mx-auto max-w-7xl space-y-4 p-6">
       <h1 className="font-semibold">Clientes</h1>
 
-      <div className="flex items-center justify-between">
-        <Suspense>
+      <Suspense>
+        <div className="flex items-center justify-between">
           <ClientFilters />
           <ClientActions />
-        </Suspense>
-      </div>
+        </div>
 
-      <div className="rounded-lg border">
-        <Suspense>
+        <div className="rounded-lg border">
           <ClientTable />
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
+
+      <Toaster theme="dark" />
     </div>
   )
 }

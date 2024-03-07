@@ -73,7 +73,7 @@ export function ClientFilters() {
       <button
         onClick={onClearFilters}
         className="border-sm flex h-9 items-center gap-2 whitespace-nowrap rounded-md border bg-white 
-          px-2 py-2 text-sm font-medium text-stone-950 shadow-sm hover:bg-stone-50"
+          px-2 py-2 text-sm font-medium text-stone-900 shadow-sm hover:bg-stone-50"
       >
         <X size={16} />
         <span className="max-md:hidden">Remover filtros</span>

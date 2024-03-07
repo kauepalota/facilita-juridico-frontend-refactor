@@ -9,6 +9,7 @@ import {
   createClient,
 } from '@/app/data/clients/create-client-data'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { dispatchCreatedToaster } from './toast'
 
 type ClientDialogFormProps = {
   toggleOpen: () => void
@@ -23,8 +24,10 @@ export function ClientDialogForm({ toggleOpen }: ClientDialogFormProps) {
 
   const mutation = useMutation({
     mutationFn: handleCreate,
-    onSuccess: async () => {
+    onSuccess: async (data) => {
       queryClient.invalidateQueries({ queryKey: ['clients'] })
+
+      dispatchCreatedToaster(data)
     },
   })
 

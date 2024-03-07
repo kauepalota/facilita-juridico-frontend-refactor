@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 
+import { ClientDeleteDialog } from '../ClientDeleteDialog'
+
 export function ClientTable() {
   const params = useSearchParams()
 
@@ -53,6 +55,12 @@ export function ClientTable() {
               <td className="p-2">
                 ({client.locationX}, {client.locationY})
               </td>
+
+              {!routing && (
+                <td className="flex items-center py-2 max-md:px-2">
+                  <ClientDeleteDialog id={client.id} />
+                </td>
+              )}
             </tr>
           ))}
       </tbody>
