@@ -1,7 +1,7 @@
 import { FilterClientForm } from './filter-client-data'
 
 export type Client = {
-  id: number
+  id: string
   name: string
   locationX: number
   locationY: number
@@ -34,7 +34,9 @@ export async function getClients({
   const data = (await response.json()) as Client[]
 
   return data.filter((client) => {
-    const idMatches = filter.id ? client.id === filter.id : true
+    const idMatches = filter.id
+      ? client.id.toLowerCase().includes(filter.id.toLowerCase())
+      : true
     const nameMatches = filter.name
       ? client.name.toLowerCase().includes(filter.name.toLowerCase())
       : true

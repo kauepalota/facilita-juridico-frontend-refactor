@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const FilterClientFormSchema = z
   .object({
-    id: z.coerce.number(),
+    id: z.string(),
     name: z.string(),
   })
   .partial()

@@ -19,7 +19,7 @@ export function ClientFilters() {
     (form: FilterClientForm) => {
       const params = new URLSearchParams(searchParams.toString())
       if (form.id && form.id !== undefined) {
-        params.set('id', String(form.id))
+        params.set('id', form.id)
       } else {
         params.delete('id')
       }
@@ -53,7 +53,6 @@ export function ClientFilters() {
         autoComplete="off"
         className="h-9 w-full rounded border border-stone-200 bg-transparent px-3 py-1 text-sm shadow-sm outline-none"
         placeholder="ID do cliente"
-        type="number"
         {...register('id')}
       />
       <input

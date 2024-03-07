@@ -18,7 +18,7 @@ export function ClientTable() {
     queryFn: async () =>
       getClients({
         filter: {
-          id: id ? Number(id) : undefined,
+          id: id || undefined,
           name: name || undefined,
         },
         routing,
@@ -33,6 +33,9 @@ export function ClientTable() {
     <table className="w-full overflow-auto text-sm">
       <thead className="[&_tr]:border-b">
         <tr>
+          {routing && (
+            <th className="h-10 px-2 text-left font-medium">Posição</th>
+          )}
           <th className="h-10 px-2 text-left font-medium">ID</th>
           <th className="h-10 px-2 text-left font-medium">Cliente</th>
           <th className="h-10 px-2 text-left font-medium">Localização</th>
@@ -41,12 +44,14 @@ export function ClientTable() {
 
       <tbody className="[&_tr:last-child]:border-0">
         {data &&
-          data.map((client) => (
-            <tr key={client.id} className="border-b">
+          data.map((client, index) => (
+            <tr key={client.id} className="border-b font-mono">
+              {routing && <td className="p-2">#{index + 1}</td>}
+
               <td className="p-2">{client.id}</td>
               <td className="p-2">{client.name}</td>
               <td className="p-2">
-                X: {client.locationX}, Y: {client.locationY}
+                ({client.locationX}, {client.locationY})
               </td>
             </tr>
           ))}
